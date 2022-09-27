@@ -1,19 +1,18 @@
-import React from "react";
+import React, { useEffect } from "react";
 import Task from "./Task";
-import { useState } from "react";
+import { useGlobalContext } from "../context/appContext";
 const Tasks = () => {
-  const [tasks, setTasks] = useState([
-    { task: "Clean my room" },
-    { task: "Wash the dishes" },
-    { task: "Study for school" },
-  ]);
-  return (
-    <div className="tasks">
-      {tasks.map((task) => {
-        return <Task task={task.task} />;
-      })}
-    </div>
-  );
+  const { tasks, setTasks } = useGlobalContext();
+
+  if (tasks) {
+    return (
+      <div className="tasks">
+        {tasks.map((task, index) => {
+          return <Task key={index} task={task.task} />;
+        })}
+      </div>
+    );
+  }
 };
 
 export default Tasks;
