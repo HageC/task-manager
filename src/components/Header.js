@@ -5,7 +5,12 @@ const Header = () => {
   const { tasks, setTasks } = useGlobalContext();
 
   const submitHandler = () => {
-    const task = { task: info };
+    if (!info) {
+      return;
+    }
+    var randLetter = String.fromCharCode(65 + Math.floor(Math.random() * 26));
+    var uniqid = randLetter + Date.now();
+    const task = { task: info, id: uniqid };
     setTasks([...tasks, task]);
     setInfo("");
   };
