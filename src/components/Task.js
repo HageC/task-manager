@@ -19,9 +19,19 @@ const Task = ({ task, id }) => {
   };
 
   const changeHandler = () => {
+    setInfo(task);
     if (!isEdit) {
       setIsEdit(true);
     } else {
+      console.log(info);
+      if (info === "") {
+        const newList = tasks.filter((task) => {
+          return task.id !== id;
+        });
+        setTasks(newList);
+        setIsEdit(false);
+        return;
+      }
       const newTasks = tasks.map((task) => {
         if (task.id == id) {
           return { ...task, task: info };
