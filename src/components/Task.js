@@ -23,7 +23,6 @@ const Task = ({ task, id }) => {
     if (!isEdit) {
       setIsEdit(true);
     } else {
-      console.log(info);
       if (info === "") {
         const newList = tasks.filter((task) => {
           return task.id !== id;
@@ -33,7 +32,7 @@ const Task = ({ task, id }) => {
         return;
       }
       const newTasks = tasks.map((task) => {
-        if (task.id == id) {
+        if (task.id === id) {
           return { ...task, task: info };
         }
 
@@ -52,9 +51,12 @@ const Task = ({ task, id }) => {
             <input
               type="text"
               value={info}
+              className="edit-input"
               onChange={(e) => setInfo(e.target.value)}
             />
-            <button onClick={changeHandler}>Submit</button>
+            <button className="submit-btn" onClick={changeHandler}>
+              Submit
+            </button>
           </>
         ) : (
           task

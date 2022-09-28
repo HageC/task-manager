@@ -126,6 +126,7 @@ h6 {
   display: flex;
   align-items: center;
   gap: 1rem;
+  flex-shrink: 0;
 }
 
 .edit-icon {
@@ -140,4 +141,23 @@ h6 {
 .edit-icon:hover {
   color: #228b22;
   transition: 0.5s;
+}
+
+.submit-btn {
+  margin-left: 0.5rem;
+  cursor: pointer;
+  border-radius: 4px;
+  border-width: 1px;
+  transition: 1s;
+}
+
+.submit-btn:hover {
+  background-color: #228b22;
+  color: #ffff;
+  transition: 1s;
+}
+
+.edit-input {
+  width: 100%;
+  max-width: 200px;
 }
