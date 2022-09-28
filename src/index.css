@@ -112,6 +112,7 @@ h6 {
   margin: 1rem auto 1rem auto;
   display: flex;
   align-items: center;
+  word-break: break-all;
 }
 
 .task p {
