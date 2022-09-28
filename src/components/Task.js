@@ -1,21 +1,57 @@
-import React from "react";
+import React, { createElement, useState } from "react";
 import { BsFillTrashFill } from "react-icons/bs";
 import { AiFillEdit } from "react-icons/ai";
 import { useGlobalContext } from "../context/appContext";
 const Task = ({ task, id }) => {
   const { setTasks, tasks } = useGlobalContext();
+  const [isEdit, setIsEdit] = useState(false);
+  const [info, setInfo] = useState(task);
+
   const removeHandler = () => {
+    if (isEdit) {
+      return;
+    }
     const newList = tasks.filter((task) => {
       return task.id !== id;
     });
 
     setTasks(newList);
   };
+
+  const changeHandler = () => {
+    if (!isEdit) {
+      setIsEdit(true);
+    } else {
+      const newTasks = tasks.map((task) => {
+        if (task.id == id) {
+          return { ...task, task: info };
+        }
+
+        return task;
+      });
+      setTasks(newTasks);
+      setIsEdit(false);
+    }
+  };
+
   return (
     <div className="task">
-      <p className="task-info">{task}</p>
+      <p className="task-info">
+        {isEdit ? (
+          <>
+            <input
+              type="text"
+              value={info}
+              onChange={(e) => setInfo(e.target.value)}
+            />
+            <button onClick={changeHandler}>Submit</button>
+          </>
+        ) : (
+          task
+        )}
+      </p>
       <div className="icons">
-        <div className="edit-icon">
+        <div className="edit-icon" onClick={changeHandler}>
           <AiFillEdit />
         </div>
         <div className="trash-icon" onClick={removeHandler}>
