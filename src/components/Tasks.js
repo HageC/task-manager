@@ -1,8 +1,8 @@
-import React, { useEffect } from "react";
+import React from "react";
 import Task from "./Task";
 import { useGlobalContext } from "../context/appContext";
 const Tasks = () => {
-  const { tasks, setTasks } = useGlobalContext();
+  const { tasks } = useGlobalContext();
 
   if (tasks.length > 0) {
     return (

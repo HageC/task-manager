@@ -7,8 +7,6 @@ const AppProvider = ({ children }) => {
     JSON.parse(localStorage.getItem("tasks")) || []
   );
 
-  const [globalEdit, setGlobalEdit] = useState(false);
-
   useEffect(() => {
     if (tasks) {
       localStorage.setItem("tasks", JSON.stringify(tasks));

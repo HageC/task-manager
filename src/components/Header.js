@@ -1,4 +1,4 @@
-import React, { useState, useRef, useEffect } from "react";
+import React, { useState } from "react";
 import { useGlobalContext } from "../context/appContext";
 const Header = () => {
   const [info, setInfo] = useState("");
